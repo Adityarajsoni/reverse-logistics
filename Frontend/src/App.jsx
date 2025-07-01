@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 
 import { AuthProvider } from "./auth/AuthContext";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import ManufacturerForm from "./pages/ManufacturerForm";
+
 
 function App() {
   return (
@@ -29,6 +31,14 @@ function App() {
             element={
               <ProtectedRoute allowedRoles={["admin"]}>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/register-product"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <ManufacturerForm />
               </ProtectedRoute>
             }
           />
