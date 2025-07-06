@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import CustomerDashboard from "./pages/CustomerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import VendorDashboard from "./pages/VendorDashboard";
+
 import Login from "./pages/Login";
 
 import { AuthProvider } from "./auth/AuthContext";
@@ -34,6 +36,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
+          <Route
+            path="/vendor"
+            element={
+              <ProtectedRoute allowedRoles={["vendor"]}>
+                <VendorDashboard />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/admin/register-product"
             element={

@@ -7,7 +7,11 @@ export default function Login() {
 
   const handleLogin = (role) => {
     login(role);
-    navigate(role === "admin" ? "/admin" : "/customer");
+
+    // Navigate to the right dashboard
+    if (role === "admin") navigate("/admin");
+    else if (role === "vendor") navigate("/vendor");
+    else navigate("/customer");
   };
 
   const handleGoogleLogin = () => {
@@ -33,6 +37,13 @@ export default function Login() {
           className="w-full bg-purple-600 hover:bg-purple-700 transition duration-200 py-2 px-4 rounded-xl font-semibold"
         >
           Login as Admin
+        </button>
+
+        <button
+          onClick={() => handleLogin("vendor")}
+          className="w-full bg-green-600 hover:bg-green-700 transition duration-200 py-2 px-4 rounded-xl font-semibold"
+        >
+          Login as Vendor
         </button>
 
         <div className="relative py-2 text-center text-sm text-gray-400">
